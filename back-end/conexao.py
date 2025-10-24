@@ -16,7 +16,6 @@ def conector():
             port=os.getenv("DB_PORT")
         )
         cursor = conexao.cursor()
-        print("conexão estabelecida")
         return conexao,cursor
     except Exception as erro:
         print(f"Erro de conexao: {erro}")
