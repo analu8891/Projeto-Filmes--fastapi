@@ -38,3 +38,19 @@ def cadastrar_filme(titulo, genero, ano, nota):
 cadastrar_filme("o destino de jupter", "ficção", 2015, 7) 
 
 
+def listar_filme():
+    conexao,cursor = conector()
+    if conexao:
+        try: 
+            cursor.execute(
+                "SELECT * FROM filmes ORDER BY id"
+            )
+            return cursor.fetchall()
+        except Exception as erro:
+            print(f" Erro ao listar o filme: {erro}")
+            return []
+        finally:
+            cursor.close()
+            conexao.close()
+
+listar_filme()
