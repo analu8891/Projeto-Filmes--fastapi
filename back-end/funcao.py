@@ -68,7 +68,22 @@ def atualizar_filme(nota, id):
             cursor.close()
             conexao.close()
             
-atualizar_filme(10,1)         
+def deletar_filme(id):
+    conexao,cursor = conector()
+    if conexao:
+        try:
+            cursor.execute(
+                "DELETE FROM filmes WHERE id = %s",
+                (id,)
+            )
+            conexao.commit()
+        except Exception as erro:
+            print(f"filme removido!: {erro}")
+        finally:
+            cursor.close()
+            conexao.close()
+
+deletar_filme(2)      
 
 
           
